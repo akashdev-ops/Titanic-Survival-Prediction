@@ -8,18 +8,13 @@ st.set_page_config(
     page_icon="🚢",
     layout="wide"
 )
-st.set_page_config(
-    page_title='Titanic Survival Predictor',
-    page_icon='🚢',
-    layout='wide'
-)
 
 # ---------- Sidebar ----------
 with st.sidebar:
     st.image('https://cdn-icons-png.flaticon.com/512/3062/3062634.png', width=120)
     st.header('About')
 
-    st.write('**Developer:** Akanksha Pal')
+    st.write('**Developer:** Akash Pratap Dev')
     st.write('**Course:** B.Tech CSE')
     st.write('**Project:** Titanic Survival Prediction')
 
