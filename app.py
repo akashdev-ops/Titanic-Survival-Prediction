@@ -10,13 +10,6 @@ st.set_page_config(
 )
 
 # ---------- Sidebar ----------
-with st.sidebar:
-    st.image('https://cdn-icons-png.flaticon.com/512/3062/3062634.png', width=120)
-  
-
-    st.write('**Developer:** Akash Pratap Dev')
-    st.write('**Course:** B.Tech CSE')
-    st.write('**Project:** Titanic Survival Prediction')
 
 
 
