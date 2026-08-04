@@ -9,23 +9,6 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------- Sidebar ----------
-
-
-
-  
-
-
-import streamlit as st
-import pandas as pd
-from sklearn.linear_model import LogisticRegression
-
-# Page config
-
-
-# Sidebar here 👇
-
-# Main app starts here 👇
 
 # ---------------- Custom CSS ----------------
 st.markdown(
@@ -64,7 +47,7 @@ st.markdown(
 # ---------------- Header ----------------
 st.markdown('<div class="title">🚢 Titanic Survival Prediction</div>', unsafe_allow_html=True)
 st.markdown(
-    '<div class="subtitle">Predict whether a passenger would survive the Titanic disaster using Machine Learning</div>',
+    '<div class="subtitle">Predict whether a passenger would survive the Titanic disaster</div>',
     unsafe_allow_html=True
 )
 
