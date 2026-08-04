@@ -15,7 +15,7 @@ st.markdown(
     """
     <style>
     .main {
-        background-color: #0E1117;
+        background-color: offwhite;
     }
     .title {
         text-align: center;
@@ -35,7 +35,7 @@ st.markdown(
         text-align: center;
         font-size: 24px;
         font-weight: bold;
-        background-color: #262730;
+        background-color: lightgreen;
         color: white;
         margin-top: 20px;
     }
