@@ -18,7 +18,7 @@ with st.sidebar:
     st.header('About')
     st.write('**Developer:** Akash Pratap Dev')
     st.write('**Course:** B.Tech CSE')
-    st.write('**Project:** Titanic Survival Prediction)
+    st.write('**Project:** Titanic Survival Prediction')
  st.info('This project predicts whether a passenger would survive the Titanic disaster based on passenger details.')
 
         
