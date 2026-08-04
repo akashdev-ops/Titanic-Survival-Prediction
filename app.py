@@ -11,17 +11,45 @@ st.set_page_config(
 st.set_page_config(
     page_title='Titanic Survival Predictor',
     page_icon='🚢',
-    layout='wide' )
+    layout='wide'
+)
+
 # ---------- Sidebar ----------
 with st.sidebar:
     st.image('https://cdn-icons-png.flaticon.com/512/3062/3062634.png', width=120)
     st.header('About')
-    st.write('**Developer:** Akash Pratap Dev')
+
+    st.write('**Developer:** Akanksha Pal')
     st.write('**Course:** B.Tech CSE')
     st.write('**Project:** Titanic Survival Prediction')
- st.info('This project predicts whether a passenger would survive the Titanic disaster based on passenger details.')
 
-        
+
+
+    st.markdown('---')
+
+    st.info('This project predicts whether a passenger would survive the Titanic disaster based on passenger details.')
+
+So your file will look like this:
+
+import streamlit as st
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+
+# Page config
+st.set_page_config(
+    page_title='Titanic Survival Predictor',
+    page_icon='🚢',
+    layout='wide'
+)
+
+# Sidebar here 👇
+with st.sidebar:
+    st.header('About')
+    ...
+
+# Main app starts here 👇
+st.markdown('<div class="title">🚢 Titanic Survival Prediction</div>', unsafe_allow_html=True)
+
 # ---------------- Custom CSS ----------------
 st.markdown(
     """
@@ -130,9 +158,8 @@ st.markdown("---")
 st.markdown(
     """
     <div style='text-align:center; color:gray;'>
-        Made with ❤️ by Akash Prtap Dev| B.Tech CSE Student    
-  </div>
+        Made with ❤️ by Akash Pratap Dev| B.Tech CSE Student
+    </div>
     """,
     unsafe_allow_html=True
-)      
-    
+)
