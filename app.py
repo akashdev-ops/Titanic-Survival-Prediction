@@ -1,239 +1,131 @@
-import streamlit as st
-import pandas as pd
-import joblib
-import time
+from PIL import Image
 
-# -------------------------------
-# PAGE CONFIG
-# -------------------------------
-st.set_page_config(
-    page_title="Titanic Survival Prediction",
-    page_icon="🚢",
-    layout="wide"
+image = Image.open("assets/titanic.jpg")
+
+st.image(image, use_container_width=True)
+st.markdown("""
+<h1 style='text-align:center;
+color:#00BFFF;
+font-size:50px;'>
+
+🚢 Titanic Survival Prediction
+
+</h1>
+
+<h4 style='text-align:center;color:white;'>
+
+AI Powered Machine Learning Dashboard
+
+</h4>
+
+""", unsafe_allow_html=True)
+st.sidebar.image(image,width=250)
+
+st.sidebar.title("Passenger Details")
+col1,col2,col3=st.columns(3)
+
+col1.metric(
+"🎯 Prediction",
+"Survived"
 )
 
-# -------------------------------
-# CUSTOM CSS
-# -------------------------------
+col2.metric(
+"📊 Accuracy",
+"82%"
+)
+
+col3.metric(
+"⚡ Speed",
+"0.01 sec"
+)
+import plotly.graph_objects as go
+
+fig=go.Figure(go.Indicator(
+
+mode="gauge+number",
+
+value=probability[0][1]*100,
+
+title={"text":"Survival Probability"}
+
+))
+
+st.plotly_chart(fig,use_container_width=True)
+fig=go.Figure(
+
+data=[
+
+go.Pie(
+
+labels=["Survive","Not Survive"],
+
+values=[
+probability[0][1],
+probability[0][0]
+]
+
+)
+
+]
+
+)
+
+st.plotly_chart(fig)
+tab1,tab2,tab3=st.tabs(
+
+["Prediction","About Model","Dataset"]
+
+)
+df=pd.read_csv("Titanic-Dataset.csv")
+
+st.dataframe(df.head())
 st.markdown("""
+
 <style>
 
 .stApp{
-    background-color:white;
+
+background:linear-gradient(
+
+135deg,
+
+#0F2027,
+
+#203A43,
+
+#2C5364
+
+);
+
 }
 
-.main-title{
-    font-size:45px;
-    font-weight:bold;
-    color:#0E76A8;
-}
+div[data-testid="metric-container"]{
 
-.sub-title{
-    font-size:20px;
-    color:gray;
-}
+background:rgba(255,255,255,0.15);
 
-.card{
-    background:white;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0px 0px 15px rgba(0,0,0,.1);
-    margin-bottom:20px;
-}
+padding:20px;
 
-.footer{
-    text-align:center;
-    color:gray;
+border-radius:20px;
+
+backdrop-filter:blur(15px);
+
+box-shadow:0 8px 32px rgba(0,0,0,.3);
+
 }
 
 </style>
+
 """,unsafe_allow_html=True)
+st.markdown("""
 
-# -------------------------------
-# LOAD MODEL
-# -------------------------------
-model = joblib.load("Titanic_Model.pkl")
+---
 
-# -------------------------------
-# HEADER
-# -------------------------------
-st.markdown(
-"""
-<div class="main-title">
-🚢 Titanic Survival Prediction
-</div>
+<center>
 
-<div class="sub-title">
-AI Powered Machine Learning Dashboard
-</div>
+Developed by **Akash Dev**
 
-<hr>
-""",
-unsafe_allow_html=True
-)
+Python • Streamlit • Scikit-Learn
 
-# -------------------------------
-# SIDEBAR
-# -------------------------------
-st.sidebar.title("Passenger Details")
+</center>
 
-pclass=st.sidebar.selectbox("Passenger Class",[1,2,3])
-
-sex=st.sidebar.selectbox(
-"Gender",
-["Female","Male"]
-)
-
-age=st.sidebar.slider(
-"Age",
-1,
-80,
-25
-)
-
-sibsp=st.sidebar.number_input(
-"Siblings/Spouse",
-0,
-10,
-0
-)
-
-parch=st.sidebar.number_input(
-"Parents/Children",
-0,
-10,
-0
-)
-
-fare=st.sidebar.number_input(
-"Fare",
-0.0,
-600.0,
-50.0
-)
-
-embarked=st.sidebar.selectbox(
-"Embarked",
-["Cherbourg","Queenstown","Southampton"]
-)
-
-predict=st.sidebar.button("🚀 Predict")
-
-# -------------------------------
-# Encoding
-# -------------------------------
-sex=1 if sex=="Male" else 0
-
-embarked={
-"Cherbourg":0,
-"Queenstown":1,
-"Southampton":2
-}[embarked]
-
-# -------------------------------
-# Prediction
-# -------------------------------
-if predict:
-
-    start=time.time()
-
-    sample=pd.DataFrame({
-
-"Pclass":[pclass],
-"Sex":[sex],
-"Age":[age],
-"SibSp":[sibsp],
-"Parch":[parch],
-"Fare":[fare],
-"Embarked":[embarked]
-
-})
-
-    prediction=model.predict(sample)
-
-    probability=model.predict_proba(sample)
-
-    end=time.time()
-
-    left,right=st.columns([2,1])
-
-    with left:
-
-        st.subheader("Prediction Result")
-
-        if prediction[0]==1:
-
-            st.success("✅ Passenger is likely to SURVIVE")
-
-            st.balloons()
-
-        else:
-
-            st.error("❌ Passenger is NOT likely to SURVIVE")
-
-        st.subheader("Confidence")
-
-        st.progress(float(probability[0][1]))
-
-        st.write(
-        f"### {probability[0][1]*100:.2f}%"
-        )
-
-    with right:
-
-        st.subheader("Passenger Summary")
-
-        st.info(f"""
-
-Passenger Class : {pclass}
-
-Gender : {"Male" if sex==1 else "Female"}
-
-Age : {age}
-
-Fare : {fare}
-
-Siblings : {sibsp}
-
-Parents : {parch}
-
-Embarked : {embarked}
-
-""")
-
-    st.divider()
-
-    c1,c2,c3=st.columns(3)
-
-    c1.metric(
-        "Model",
-        "Logistic Regression"
-    )
-
-    c2.metric(
-        "Accuracy",
-        "82%"
-    )
-
-    c3.metric(
-        "Prediction Time",
-        f"{end-start:.4f} sec"
-    )
-
-# -------------------------------
-# FOOTER
-# -------------------------------
-st.markdown("---")
-
-st.markdown(
-"""
-<div class="footer">
-
-Developed by <b>Akash Dev</b>
-
-Python • Scikit-Learn • Streamlit
-
-</div>
-""",
-unsafe_allow_html=True
-)
+""",unsafe_allow_html=True)
