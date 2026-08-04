@@ -8,7 +8,20 @@ st.set_page_config(
     page_icon="🚢",
     layout="wide"
 )
+st.set_page_config(
+    page_title='Titanic Survival Predictor',
+    page_icon='🚢',
+    layout='wide' )
+# ---------- Sidebar ----------
+with st.sidebar:
+    st.image('https://cdn-icons-png.flaticon.com/512/3062/3062634.png', width=120)
+    st.header('About')
+    st.write('**Developer:** Akash Pratap Dev')
+    st.write('**Course:** B.Tech CSE')
+    st.write('**Project:** Titanic Survival Prediction)
+ st.info('This project predicts whether a passenger would survive the Titanic disaster based on passenger details.')
 
+        
 # ---------------- Custom CSS ----------------
 st.markdown(
     """
@@ -117,8 +130,9 @@ st.markdown("---")
 st.markdown(
     """
     <div style='text-align:center; color:gray;'>
-        Made with ❤️ by Akanksha Pal | B.Tech CSE Student
-    </div>
+        Made with ❤️ by Akash Prtap Dev| B.Tech CSE Student    
+  </div>
     """,
     unsafe_allow_html=True
-)
+)      
+    
