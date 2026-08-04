@@ -20,10 +20,7 @@ with st.sidebar:
 
 
 
-    st.markdown('---')
-
-    st.info('This project predicts whether a passenger would survive the Titanic disaster based on passenger details.')
-
+  
 
 
 import streamlit as st
@@ -31,11 +28,7 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression
 
 # Page config
-st.set_page_config(
-    page_title='Titanic Survival Predictor',
-    page_icon='🚢',
-    layout='wide'
-)
+
 
 # Sidebar here 👇
 with st.sidebar:
