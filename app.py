@@ -47,7 +47,7 @@ st.markdown(
 # ---------------- Header ----------------
 st.markdown('<div class="title">🚢 Titanic Survival Prediction</div>', unsafe_allow_html=True)
 st.markdown(
-      '<div class="subtitle">Predict whether a passenger would survive the Titanic disaster</div>',
+      '<div class="subtitle">  Predict whether a passenger would survive the Titanic disaster</div>',
     unsafe_allow_html=True
 )
 
