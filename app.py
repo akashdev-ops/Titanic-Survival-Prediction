@@ -15,7 +15,7 @@ st.markdown(
     """
     <style>
     .main {
-        background-color: #111827;
+        background-color: #FFFFFF;
     }
     .title {
         text-align: center;
