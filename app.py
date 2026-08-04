@@ -29,7 +29,7 @@ with st.sidebar:
 
     st.info('This project predicts whether a passenger would survive the Titanic disaster based on passenger details.')
 
-So your file will look like this:
+
 
 import streamlit as st
 import pandas as pd
