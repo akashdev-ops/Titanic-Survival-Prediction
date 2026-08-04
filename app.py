@@ -31,12 +31,8 @@ from sklearn.linear_model import LogisticRegression
 
 
 # Sidebar here 👇
-with st.sidebar:
-    st.header('About')
-    ...
 
 # Main app starts here 👇
-st.markdown('<div class="title">🚢 Titanic Survival Prediction</div>', unsafe_allow_html=True)
 
 # ---------------- Custom CSS ----------------
 st.markdown(
